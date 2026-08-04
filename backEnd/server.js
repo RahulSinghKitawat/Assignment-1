@@ -10,4 +10,15 @@ const PORT = 5000;
 app.use(express.json());
 app.use(cookieParser());
 
+connectDB();
 
+app.get("/",(req,res)=>{
+    res.send("api is running..");
+});
+
+app.use("/api/auth",authRoutes);
+app.use("/api/product",productRoutes);
+
+app.listen(PORT,()=>{
+    console.log(`server is running on http://localhost:${PORT}`);
+});
